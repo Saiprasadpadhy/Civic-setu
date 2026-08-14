@@ -1,12 +1,19 @@
-import Navbar from './Navbar';
+import { Navbar } from './Navbar';
 
-export default function Layout({ children }) {
+export function Layout({ children }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       <Navbar />
       <main className="flex-1">{children}</main>
-      <footer className="border-t border-gray-200 bg-white py-6 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} CivicSetu. Civic grievance management platform.
+      <footer className="border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p>© {new Date().getFullYear()} CivicSetu. Built for transparent, evidence-grounded civic governance.</p>
+          <div className="flex items-center gap-4 text-slate-400">
+            <span>Privacy</span>
+            <span>Terms</span>
+            <span>API Status: Online</span>
+          </div>
+        </div>
       </footer>
     </div>
   );

@@ -1,0 +1,36 @@
+{
+  "name": "civicsetu-server",
+  "version": "1.0.0",
+  "description": "CivicSetu Express API",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "dev:clean": "powershell -ExecutionPolicy Bypass -File scripts/dev.ps1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:phase5": "vitest run tests/phase5_powerful.test.js",
+    "seed:reference": "node scripts/seed-reference-data.js",
+    "seed:users": "node scripts/seed-test-users.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "@google/generative-ai": "^0.24.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.1.4",
+    "supertest": "^7.0.0",
+    "vitest": "^3.0.5"
+  }
+}
