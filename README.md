@@ -106,4 +106,8 @@ This project is licensed under the **MIT License** – see `LICENSE` for details
 
 ---
 
+<<<<<<< HEAD
 *Built for the Smart India Hackathon 2026.*
+=======
+*Built for the Smart India Hackathon 2026.*
+>>>>>>> 7a4944e5399006d2a72d9a8782b299835b0431df
