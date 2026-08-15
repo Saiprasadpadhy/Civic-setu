@@ -17,5 +17,6 @@ router.get('/:id', validateObjectIdParam('id'), citizenController.getGrievance);
 router.get('/:id/timeline', validateObjectIdParam('id'), citizenController.getTimeline);
 router.get('/:id/evidence', validateObjectIdParam('id'), citizenController.getEvidence);
 router.patch('/:id/close', authorize('citizen'), validateObjectIdParam('id'), citizenController.closeGrievance);
+router.post('/:id/close', authorize('citizen'), validateObjectIdParam('id'), citizenController.closeGrievance);
 
 export default router;

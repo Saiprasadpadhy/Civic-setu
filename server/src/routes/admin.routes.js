@@ -12,6 +12,10 @@ const router = Router();
 
 router.use(authenticate, authorize('admin'));
 
+router.get('/analytics/overview', adminController.getAnalyticsOverview);
+router.get('/analytics/heatmap', adminController.getWardHeatmap);
+router.get('/analytics/sla', adminController.getSLAMonitoring);
+
 router.get('/grievances', validateListFilters, adminController.listGrievances);
 router.get('/officers', adminController.listOfficers);
 router.get('/grievances/:id', validateObjectIdParam('id'), adminController.getGrievance);

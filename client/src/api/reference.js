@@ -14,3 +14,15 @@ export const getWardById = async (id) => {
   const { data } = await api.get(`/wards/${id}`);
   return data.data?.ward;
 };
+
+export const getCategories = async () => {
+  const departments = await getDepartments();
+  const catSet = new Set();
+  departments.forEach((d) => {
+    (d.categories || []).forEach((c) => catSet.add(c));
+  });
+  if (catSet.size === 0) {
+    return ['pothole', 'garbage', 'streetlight', 'water', 'drainage', 'sanitation', 'roads'];
+  }
+  return Array.from(catSet);
+};

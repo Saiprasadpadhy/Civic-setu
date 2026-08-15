@@ -29,3 +29,8 @@ export const uploadOfficerResolutionEvidence = async (id, payload) => {
   const { data } = await api.post(`/officer/grievances/${id}/evidence`, payload);
   return data.data?.evidence;
 };
+
+export const claimOfficerGrievance = async (id) => {
+  const { data } = await api.post(`/officer/grievances/${id}/claim`);
+  return data.data?.grievance;
+};

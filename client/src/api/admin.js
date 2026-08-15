@@ -34,3 +34,18 @@ export const getAdminOfficers = async (departmentId) => {
   const { data } = await api.get('/admin/officers', { params: { departmentId } });
   return data.data?.officers || [];
 };
+
+export const getAnalyticsOverview = async (params = {}) => {
+  const { data } = await api.get('/admin/analytics/overview', { params });
+  return data.data;
+};
+
+export const getWardHeatmapData = async (params = {}) => {
+  const { data } = await api.get('/admin/analytics/heatmap', { params });
+  return data.data;
+};
+
+export const getSLAMonitoringData = async (params = {}) => {
+  const { data } = await api.get('/admin/analytics/sla', { params });
+  return data.data;
+};

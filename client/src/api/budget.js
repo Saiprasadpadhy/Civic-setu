@@ -15,6 +15,16 @@ export const createBudgetProject = async (payload) => {
   return data.data?.project;
 };
 
+export const simulateBudget = async (payload) => {
+  const { data } = await api.post('/budget-projects/simulate', payload);
+  return data.data;
+};
+
+export const updateBudgetProjectStatus = async (id, payload) => {
+  const { data } = await api.patch(`/budget-projects/${id}/status`, payload);
+  return data.data?.project;
+};
+
 export const getBudgetAnalytics = async () => {
   const { data } = await api.get('/budget-projects/analytics');
   return data.data;

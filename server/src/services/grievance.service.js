@@ -21,6 +21,7 @@ import {
   normalizeStatus,
 } from '../constants/workflow.js';
 import { GRIEVANCE_STATUSES, PRIORITIES } from '../constants/enums.js';
+import { calculateSlaHours, computeGrievanceSla } from './sla.service.js';
 
 const grievancePopulate = [
   { path: 'wardId', select: 'name code city' },
@@ -120,6 +121,12 @@ export async function createGrievance(citizenId, payload, req) {
     aiStatus: 'pending',
     titleNormalized: payload.title.trim(),
     descriptionNormalized: payload.description.trim(),
+    sla: {
+      hoursAllocated: 72,
+      predictedDueAt: new Date(Date.now() + 72 * 60 * 60 * 1000),
+      status: 'on_track',
+      resolvedAt: null,
+    },
   });
 
   await recordStatusHistory({
@@ -294,9 +301,21 @@ export async function updateGrievanceStatus({
   grievance.status = normalizedToStatus;
 
   if (normalizedToStatus === 'resolved') {
+    const resolvedAt = new Date();
+    const slaCalc = computeGrievanceSla(
+      {
+        ...grievance.toObject(),
+        createdAt: grievance.createdAt,
+        status: 'resolved',
+        sla: { ...grievance.sla, resolvedAt },
+      },
+      resolvedAt
+    );
+
     grievance.sla = {
       ...grievance.sla,
-      resolvedAt: new Date(),
+      resolvedAt,
+      status: slaCalc.status,
     };
   }
 
@@ -405,6 +424,15 @@ export async function assignOfficer({ grievance, officerId, actor, req }) {
   });
 
   return grievance.populate(grievancePopulate);
+}
+
+export async function claimGrievance({ grievance, actor, req }) {
+  return assignOfficer({
+    grievance,
+    officerId: actor.userId,
+    actor,
+    req,
+  });
 }
 
 export async function addResolutionEvidence({ grievance, actor, payload, req }) {

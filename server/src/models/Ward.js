@@ -26,11 +26,9 @@ const wardSchema = new mongoose.Schema(
       type: {
         type: String,
         enum: ['Polygon'],
-        default: 'Polygon',
       },
       coordinates: {
         type: [[[Number]]],
-        default: undefined,
       },
     },
     center: {

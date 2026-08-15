@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 
 export default function OfficerGrievanceQueuePage() {
-  const [scope, setScope] = useState('assigned'); // 'assigned' or 'department'
+  const [scope, setScope] = useState('department'); // 'assigned' or 'department'
   const [grievances, setGrievances] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -80,7 +80,7 @@ export default function OfficerGrievanceQueuePage() {
           Officer Grievance Queue ({total})
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 mt-1">
-          Manage assigned grievances, transition to in_progress, and upload resolution proof
+          Manage department grievances, transition status, upload field evidence, and resolve complaints
         </p>
       </div>
 

@@ -6,6 +6,7 @@ import { detectDuplicates } from './duplicate.service.js';
 import { detectLanguageHeuristic } from './language.service.js';
 import { priorityFromGeminiHints } from './priority.service.js';
 import { detectSpam } from './spam.service.js';
+import { calculateSlaHours } from './sla.service.js';
 
 async function logInference({
   entityType,
@@ -150,6 +151,19 @@ export async function runIntelligencePipeline(grievance, options = {}) {
   grievance.priority = priority.priority;
   grievance.priorityScore = priority.score;
 
+  const defaultSlaHours = department?.defaultSlaHours || 72;
+  const hoursAllocated = calculateSlaHours({
+    defaultSlaHours,
+    priority: priority.priority,
+  });
+  const createdAt = grievance.createdAt || new Date();
+  grievance.sla = {
+    hoursAllocated,
+    predictedDueAt: new Date(createdAt.getTime() + hoursAllocated * 60 * 60 * 1000),
+    status: 'on_track',
+    resolvedAt: grievance.sla?.resolvedAt || null,
+  };
+
   grievance.aiAnalysis = {
     summary: text.summary,
     suggestedCategory: text.category,
@@ -194,6 +208,29 @@ export async function runIntelligencePipeline(grievance, options = {}) {
     matchReason: item.matchReason,
   }));
   grievance.isDuplicate = duplicateResult.highestScore >= 0.85;
+
+  // Auto-assign to available department officer if unassigned
+  if (!grievance.assignedOfficerId && grievance.departmentId) {
+    const User = (await import('../models/User.js')).default;
+    const availableOfficer =
+      (grievance.wardId
+        ? await User.findOne({
+            role: 'officer',
+            departmentId: grievance.departmentId,
+            wardId: grievance.wardId,
+            isActive: true,
+          }).sort({ email: -1 })
+        : null) ||
+      (await User.findOne({
+        role: 'officer',
+        departmentId: grievance.departmentId,
+        isActive: true,
+      }).sort({ email: -1 }));
+
+    if (availableOfficer) {
+      grievance.assignedOfficerId = availableOfficer._id;
+    }
+  }
 
   grievance.aiStatus = 'completed';
   if (!textResult.success) {

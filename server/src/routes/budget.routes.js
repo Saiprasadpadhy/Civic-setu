@@ -7,6 +7,8 @@ const router = Router();
 
 router.get('/', authenticate, budgetController.listBudgetProjects);
 router.get('/analytics', authenticate, budgetController.getBudgetAnalytics);
+router.post('/simulate', authenticate, budgetController.simulateBudget);
+
 router.post(
   '/:id/vote',
   authenticate,
@@ -14,6 +16,15 @@ router.post(
   validateObjectIdParam('id'),
   budgetController.voteBudgetProject
 );
+
+router.patch(
+  '/:id/status',
+  authenticate,
+  authorize('admin'),
+  validateObjectIdParam('id'),
+  budgetController.updateBudgetProjectStatus
+);
+
 router.post(
   '/',
   authenticate,

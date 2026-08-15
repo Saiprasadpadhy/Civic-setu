@@ -24,9 +24,11 @@ export const SLA_STATUSES = ['on_track', 'at_risk', 'breached', 'met'];
 export const BUDGET_PROJECT_STATUSES = [
   'proposed',
   'voting_open',
+  'voting_closed',
   'approved',
   'funded',
   'completed',
+  'rejected',
   'cancelled',
 ];
 

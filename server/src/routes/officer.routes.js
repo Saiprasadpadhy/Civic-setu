@@ -29,6 +29,12 @@ router.post(
   officerController.addRemark
 );
 router.post(
+  '/grievances/:id/remark',
+  validateObjectIdParam('id'),
+  validateRemark,
+  officerController.addRemark
+);
+router.post(
   '/grievances/:id/resolve',
   validateObjectIdParam('id'),
   validateResolve,
@@ -39,6 +45,11 @@ router.post(
   validateObjectIdParam('id'),
   validateResolutionEvidence,
   officerController.uploadEvidence
+);
+router.post(
+  '/grievances/:id/claim',
+  validateObjectIdParam('id'),
+  officerController.claimGrievance
 );
 
 export default router;

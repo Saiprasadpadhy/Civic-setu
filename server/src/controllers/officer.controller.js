@@ -83,3 +83,18 @@ export const uploadEvidence = asyncHandler(async (req, res) => {
     data: { evidence },
   });
 });
+
+export const claimGrievance = asyncHandler(async (req, res) => {
+  const grievance = await grievanceService.assertGrievanceAccess(req.params.id, req.user);
+  const updated = await grievanceService.claimGrievance({
+    grievance,
+    actor: req.user,
+    req,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Grievance assigned to you successfully',
+    data: { grievance: updated },
+  });
+});

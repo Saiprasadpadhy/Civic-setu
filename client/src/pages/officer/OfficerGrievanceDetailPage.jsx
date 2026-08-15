@@ -193,6 +193,31 @@ export default function OfficerGrievanceDetailPage() {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-2">
+          {(!grievance.assignedOfficerId || ['submitted', 'under_review'].includes(grievance.status)) && (
+            <Button
+              variant="primary"
+              size="md"
+              loading={statusUpdating}
+              onClick={async () => {
+                setStatusUpdating(true);
+                setError(null);
+                try {
+                  const updated = await officerApi.claimOfficerGrievance(id);
+                  setGrievance(updated);
+                  fetchDetails();
+                } catch (err) {
+                  setError('Failed to claim ticket: ' + (err.response?.data?.message || err.message));
+                } finally {
+                  setStatusUpdating(false);
+                }
+              }}
+              icon={CheckCircle2}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-md shadow-blue-500/20"
+            >
+              Claim & Assign to Myself
+            </Button>
+          )}
+
           {grievance.status === 'assigned' && (
             <Button
               variant="primary"

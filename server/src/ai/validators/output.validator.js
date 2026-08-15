@@ -7,6 +7,13 @@ function clamp01(value, fallback = 0) {
   return Math.min(1, Math.max(0, num));
 }
 
+function sanitizeAiString(str = '') {
+  return String(str)
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/[<>]/g, '')
+    .trim();
+}
+
 export function parseJsonResponse(rawText = '') {
   const cleaned = rawText
     .trim()
@@ -45,15 +52,15 @@ export function validateTextAnalysisOutput(data) {
   const hints = data.semanticHints ?? {};
 
   return {
-    summary: data.summary.trim(),
-    category: data.category.trim().toLowerCase(),
-    suggestedDepartment: data.suggestedDepartment.trim(),
+    summary: sanitizeAiString(data.summary),
+    category: sanitizeAiString(data.category).toLowerCase(),
+    suggestedDepartment: sanitizeAiString(data.suggestedDepartment),
     severity: data.severity,
-    urgencyExplanation: data.urgencyExplanation.trim(),
+    urgencyExplanation: sanitizeAiString(data.urgencyExplanation),
     language,
     normalizedText: {
-      title: data.normalizedText.title.trim(),
-      description: data.normalizedText.description.trim(),
+      title: sanitizeAiString(data.normalizedText.title),
+      description: sanitizeAiString(data.normalizedText.description),
     },
     semanticHints: {
       safetyImpact: clamp01(hints.safetyImpact),
@@ -82,11 +89,11 @@ export function validateImageAnalysisOutput(data) {
   }
 
   return {
-    likelyIssue: data.likelyIssue.trim(),
-    visibleDamage: data.visibleDamage.trim(),
-    category: data.category.trim().toLowerCase(),
-    observations: data.observations.map((item) => String(item).trim()).filter(Boolean),
+    likelyIssue: sanitizeAiString(data.likelyIssue),
+    visibleDamage: sanitizeAiString(data.visibleDamage),
+    category: sanitizeAiString(data.category).toLowerCase(),
+    observations: data.observations.map((item) => sanitizeAiString(item)).filter(Boolean),
     confidence: clamp01(data.confidence),
-    uncertaintyNotes: data.uncertaintyNotes.trim(),
+    uncertaintyNotes: sanitizeAiString(data.uncertaintyNotes),
   };
 }
