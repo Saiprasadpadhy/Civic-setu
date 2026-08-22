@@ -60,15 +60,10 @@ export default function HomePage() {
     <div className="space-y-16 py-8">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-6 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold mb-6 animate-soft-pulse">
-            <Sparkles className="w-4 h-4 text-blue-600" />
-            Phase 6 Production Govtech System Live
-          </div>
-
+        <div className="w-full px-3 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight font-display max-w-4xl mx-auto leading-tight sm:leading-none">
             Evidence-Grounded Civic Triage &{' '}
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0A2540] via-[#1d4674] to-amber-600 bg-clip-text text-transparent">
               Participatory Budgeting
             </span>
           </h1>
@@ -89,7 +84,7 @@ export default function HomePage() {
             ) : (
               <>
                 <Link to={ROUTES.REGISTER}>
-                  <Button size="lg" variant="primary" icon={ArrowRight}>
+                  <Button size="lg" variant="secondary" icon={ArrowRight}>
                     Submit a Complaint as Citizen
                   </Button>
                 </Link>
@@ -118,7 +113,7 @@ export default function HomePage() {
                 onChange={(e) => setTicketSearch(e.target.value)}
                 className="flex-1 bg-transparent border-none text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
               />
-              <Button type="submit" variant="secondary" size="sm">
+              <Button type="submit" variant="primary" size="sm">
                 Track Ticket
               </Button>
             </form>
@@ -127,39 +122,39 @@ export default function HomePage() {
       </section>
 
       {/* Real-time platform numbers from live backend */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full px-3 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="p-5 text-center bg-white border-slate-200/80">
+          <Card className="p-5 text-center bg-white border-slate-200/80 hover:border-amber-500/30 transition-colors shadow-sm">
             <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">Active Wards</p>
-            <p className="text-3xl font-extrabold text-slate-900 mt-1 font-display">
+            <p className="text-3xl font-extrabold text-[#0A2540] mt-1 font-display">
               {loadingStats ? '...' : wards.length || 3}
             </p>
-            <span className="text-[11px] text-emerald-600 font-semibold mt-1 inline-block">
+            <span className="text-[11px] text-teal-700 font-semibold mt-1 inline-block">
               100% Geospatially Mapped
             </span>
           </Card>
 
-          <Card className="p-5 text-center bg-white border-slate-200/80">
+          <Card className="p-5 text-center bg-white border-slate-200/80 hover:border-amber-500/30 transition-colors shadow-sm">
             <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">Connected Depts</p>
-            <p className="text-3xl font-extrabold text-blue-600 mt-1 font-display">
+            <p className="text-3xl font-extrabold text-[#173a60] mt-1 font-display">
               {loadingStats ? '...' : departments.length || 3}
             </p>
-            <span className="text-[11px] text-blue-600 font-semibold mt-1 inline-block">
+            <span className="text-[11px] text-amber-700 font-semibold mt-1 inline-block">
               Roads, Water, Sanitation
             </span>
           </Card>
 
-          <Card className="p-5 text-center bg-white border-slate-200/80">
+          <Card className="p-5 text-center bg-white border-slate-200/80 hover:border-amber-500/30 transition-colors shadow-sm">
             <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">AI Intelligence</p>
-            <p className="text-3xl font-extrabold text-indigo-600 mt-1 font-display">Gemini 2.0</p>
-            <span className="text-[11px] text-indigo-600 font-semibold mt-1 inline-block">
+            <p className="text-3xl font-extrabold text-amber-600 mt-1 font-display">Gemini AI</p>
+            <span className="text-[11px] text-[#173a60] font-semibold mt-1 inline-block">
               Multilingual & Vision Grounded
             </span>
           </Card>
 
-          <Card className="p-5 text-center bg-white border-slate-200/80">
+          <Card className="p-5 text-center bg-white border-slate-200/80 hover:border-amber-500/30 transition-colors shadow-sm">
             <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">SLA Target</p>
-            <p className="text-3xl font-extrabold text-emerald-600 mt-1 font-display">48-96h</p>
+            <p className="text-3xl font-extrabold text-teal-700 mt-1 font-display">48-96h</p>
             <span className="text-[11px] text-slate-500 font-semibold mt-1 inline-block">
               Evidence-Based Resolution
             </span>
@@ -168,7 +163,7 @@ export default function HomePage() {
       </section>
 
       {/* Feature Pillars */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full px-3 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-display">
             Next-Generation Civic Infrastructure
@@ -180,8 +175,8 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <Card className="p-6 bg-white border-slate-200/80 hover:shadow-md transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+          <Card className="p-6 bg-white border-slate-200/80 hover:border-amber-500/30 hover:shadow-md transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200/60 flex items-center justify-center mb-4">
               <Brain className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 font-display">
@@ -193,8 +188,8 @@ export default function HomePage() {
           </Card>
 
           {/* Card 2 */}
-          <Card className="p-6 bg-white border-slate-200/80 hover:shadow-md transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+          <Card className="p-6 bg-white border-slate-200/80 hover:border-amber-500/30 hover:shadow-md transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-slate-100 text-[#0A2540] border border-slate-200 flex items-center justify-center mb-4">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 font-display">
@@ -206,8 +201,8 @@ export default function HomePage() {
           </Card>
 
           {/* Card 3 */}
-          <Card className="p-6 bg-white border-slate-200/80 hover:shadow-md transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
+          <Card className="p-6 bg-white border-slate-200/80 hover:border-amber-500/30 hover:shadow-md transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200/60 flex items-center justify-center mb-4">
               <Vote className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 font-display">
@@ -221,8 +216,8 @@ export default function HomePage() {
       </section>
 
       {/* Workflow Step Explainer */}
-      <section className="bg-slate-900 text-white py-16 rounded-3xl mx-4 sm:mx-6 lg:mx-8 px-6 sm:px-12">
-        <div className="max-w-4xl mx-auto">
+      <section className="bg-slate-900 text-white py-16 rounded-3xl mx-3 sm:mx-6 lg:mx-8 px-4 sm:px-12">
+        <div className="w-full max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-blue-400">
               Transparent Lifecycle

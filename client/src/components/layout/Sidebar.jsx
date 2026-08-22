@@ -66,12 +66,12 @@ export function Sidebar({ isOpen, onClose }) {
         <div className="flex flex-col h-full justify-between">
           <div className="space-y-6">
             {/* User role banner */}
-            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-sm">
-              <p className="text-[10px] uppercase font-bold tracking-wider text-blue-400">
+            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-[#0A2540] to-[#173a60] text-white shadow-md shadow-[#0A2540]/20 border border-amber-500/20">
+              <p className="text-[10px] uppercase font-bold tracking-wider text-amber-400">
                 {isAdmin ? '🛡️ Administrator Portal' : isOfficer ? '👮 Officer Portal' : '👤 Citizen Portal'}
               </p>
               <p className="text-sm font-bold text-white mt-1 font-display truncate">{user?.name}</p>
-              <p className="text-[11px] text-slate-400 truncate">{user?.email}</p>
+              <p className="text-[11px] text-slate-300 truncate">{user?.email}</p>
             </div>
 
             {/* Navigation items */}
@@ -89,14 +89,14 @@ export function Sidebar({ isOpen, onClose }) {
                       flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150
                       ${
                         isActive
-                          ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                          ? 'bg-[#0A2540] text-white shadow-md shadow-[#0A2540]/30 border border-white/10'
                           : item.highlight
-                          ? 'bg-blue-50 text-blue-700 hover:bg-blue-100/80'
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                          ? 'bg-amber-50 text-amber-900 border border-amber-200/80 hover:bg-amber-100/80'
+                          : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
                       }
                     `}
                   >
-                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : item.highlight ? 'text-blue-600' : 'text-slate-500'}`} />
+                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-amber-400' : item.highlight ? 'text-amber-600' : 'text-slate-500'}`} />
                     <span className="truncate">{item.label}</span>
                   </Link>
                 );

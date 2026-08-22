@@ -6,7 +6,7 @@ export function Layout({ children }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <footer className="border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="w-full px-3 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p>© {new Date().getFullYear()} CivicSetu. Built for transparent, evidence-grounded civic governance.</p>
           <div className="flex items-center gap-4 text-slate-400">
             <span>Privacy</span>

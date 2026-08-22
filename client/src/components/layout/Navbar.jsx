@@ -39,7 +39,7 @@ export function Navbar({ onToggleSidebar, showSidebarToggle = false }) {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="w-full flex h-16 items-center justify-between px-3 sm:px-6 lg:px-8">
         {/* Left branding */}
         <div className="flex items-center gap-3">
           {showSidebarToggle && (
@@ -53,14 +53,14 @@ export function Navbar({ onToggleSidebar, showSidebarToggle = false }) {
           )}
 
           <Link to={ROUTES.HOME} className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform font-display">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#0A2540] to-[#173a60] border border-amber-500/30 flex items-center justify-center text-amber-400 font-black shadow-md shadow-[#0A2540]/30 group-hover:scale-105 transition-transform font-display">
               CS
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold tracking-tight text-slate-900 font-display">
                 {APP_NAME}
               </span>
-              <span className="text-[10px] -mt-1 text-slate-400 font-medium tracking-wide">
+              <span className="text-[10px] -mt-1 text-amber-700 font-medium tracking-wide">
                 Govtech Portal
               </span>
             </div>
@@ -73,8 +73,8 @@ export function Navbar({ onToggleSidebar, showSidebarToggle = false }) {
             to={ROUTES.HOME}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
               location.pathname === ROUTES.HOME
-                ? 'bg-blue-50 text-blue-700 font-bold'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-slate-100 text-[#0A2540] font-bold border border-slate-200'
+                : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
             }`}
           >
             Home
@@ -85,8 +85,8 @@ export function Navbar({ onToggleSidebar, showSidebarToggle = false }) {
               to={getDashboardLink()}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
                 location.pathname.includes('/dashboard')
-                  ? 'bg-blue-50 text-blue-700 font-bold'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                  ? 'bg-slate-100 text-[#0A2540] font-bold border border-slate-200'
+                  : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
               }`}
             >
               Dashboard
@@ -97,16 +97,16 @@ export function Navbar({ onToggleSidebar, showSidebarToggle = false }) {
             <>
               <Link
                 to={ROUTES.CITIZEN_SUBMIT_GRIEVANCE}
-                className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-blue-600 hover:bg-blue-50 flex items-center gap-1"
+                className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-amber-700 hover:bg-amber-50 flex items-center gap-1 border border-transparent hover:border-amber-200"
               >
-                <PlusCircle className="w-3.5 h-3.5" />
+                <PlusCircle className="w-3.5 h-3.5 text-amber-600" />
                 Submit Grievance
               </Link>
               <Link
                 to={ROUTES.CITIZEN_PUBLIC_WORKS}
                 className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 flex items-center gap-1"
               >
-                <Vote className="w-3.5 h-3.5 text-indigo-500" />
+                <Vote className="w-3.5 h-3.5 text-[#173a60]" />
                 Public Works
               </Link>
             </>

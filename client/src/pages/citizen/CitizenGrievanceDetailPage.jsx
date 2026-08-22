@@ -172,7 +172,7 @@ export default function CitizenGrievanceDetailPage() {
                 <p className="text-slate-400 font-medium">Department</p>
                 <p className="font-semibold text-slate-800 mt-0.5 flex items-center gap-1">
                   <Building2 className="w-3.5 h-3.5 text-indigo-600" />
-                  {grievance.departmentId?.name || 'Assigned automatically'}
+                  {grievance.departmentId?.name || (grievance.category === 'invalid' || !grievance.departmentId ? 'Unassigned / NA' : 'Unassigned')}
                 </p>
               </div>
 
@@ -300,7 +300,7 @@ export default function CitizenGrievanceDetailPage() {
               SLA Compliance Guarantee
             </p>
             <p className="text-slate-500">
-              Department resolution standard: <strong className="text-slate-800">{grievance.departmentId?.defaultSlaHours || 72} hours</strong>.
+              Department resolution standard: <strong className="text-slate-800">{grievance.departmentId ? `${grievance.departmentId.defaultSlaHours || 72} hours` : 'NA (Unassigned)'}</strong>.
             </p>
             <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100 text-slate-600 mt-2">
               Status: <span className="font-semibold text-emerald-600 capitalize">{grievance.sla?.status || 'On Track'}</span>

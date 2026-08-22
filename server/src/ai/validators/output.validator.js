@@ -15,11 +15,18 @@ function sanitizeAiString(str = '') {
 }
 
 export function parseJsonResponse(rawText = '') {
-  const cleaned = rawText
-    .trim()
-    .replace(/^```json\s*/i, '')
-    .replace(/^```\s*/i, '')
-    .replace(/\s*```$/i, '');
+  let cleaned = String(rawText || '').trim();
+  
+  const match = cleaned.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+  if (match) {
+    cleaned = match[1].trim();
+  } else {
+    const firstBrace = cleaned.indexOf('{');
+    const lastBrace = cleaned.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      cleaned = cleaned.slice(firstBrace, lastBrace + 1).trim();
+    }
+  }
 
   return JSON.parse(cleaned);
 }

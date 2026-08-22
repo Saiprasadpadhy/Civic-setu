@@ -28,17 +28,17 @@ export function AIPreviewCard({
   const imageAnalysis = previewData.imageAnalysis;
 
   return (
-    <div className={`p-5 rounded-2xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white shadow-xl border border-indigo-500/20 relative overflow-hidden ${className}`}>
+    <div className={`p-5 rounded-2xl bg-gradient-to-br from-[#06182a] via-[#0A2540] to-[#0f2d4e] text-white shadow-xl border border-amber-500/20 relative overflow-hidden ${className}`}>
       {/* Background glow accent */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
-      <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800/80">
-        <div className="flex items-center gap-2 text-blue-400">
-          <div className="p-1.5 rounded-lg bg-blue-500/20 border border-blue-500/30">
-            <Brain className="w-4 h-4 text-blue-300" />
+      <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-700/80">
+        <div className="flex items-center gap-2 text-amber-400">
+          <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30">
+            <Brain className="w-4 h-4 text-amber-400" />
           </div>
-          <span className="text-xs uppercase tracking-wider font-bold text-blue-300">
+          <span className="text-xs uppercase tracking-wider font-bold text-amber-300">
             Live AI Triage Analysis
           </span>
         </div>
@@ -54,7 +54,11 @@ export function AIPreviewCard({
 
         <div className="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
           <p className="text-[10px] uppercase font-semibold text-slate-400">Department Route</p>
-          <p className="text-xs font-bold text-blue-300 mt-0.5">{textAnalysis.suggestedDepartment || 'Public Works'}</p>
+          <p className="text-xs font-bold text-blue-300 mt-0.5">
+            {textAnalysis.suggestedDepartment && !['NONE', 'N/A', 'NA', 'UNASSIGNED', 'INVALID', 'OTHER', 'NULL'].includes(textAnalysis.suggestedDepartment.toUpperCase().trim())
+              ? textAnalysis.suggestedDepartment
+              : 'Unassigned / NA'}
+          </p>
         </div>
 
         <div className="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60 col-span-2 sm:col-span-1">

@@ -17,15 +17,15 @@ export function Button({
 
   const variants = {
     primary:
-      'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 focus:ring-blue-500 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30',
+      'bg-gradient-to-r from-[#0A2540] via-[#173a60] to-[#1d4674] text-white hover:from-[#173a60] hover:to-[#265991] focus:ring-amber-500 shadow-md shadow-[#0A2540]/25 hover:shadow-lg hover:shadow-[#0A2540]/35 border border-white/10',
     secondary:
-      'bg-slate-800 text-white hover:bg-slate-900 focus:ring-slate-700 shadow-sm',
+      'bg-amber-600 text-white hover:bg-amber-700 focus:ring-amber-500 shadow-sm shadow-amber-600/25',
     outline:
-      'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 focus:ring-blue-500 shadow-sm',
+      'border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400 focus:ring-[#0A2540] shadow-sm',
     ghost:
-      'text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:ring-slate-400',
+      'text-slate-700 hover:text-slate-950 hover:bg-slate-100 focus:ring-slate-400',
     danger:
-      'bg-rose-600 text-white hover:bg-rose-700 focus:ring-rose-500 shadow-sm shadow-rose-500/20',
+      'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-sm shadow-red-600/20',
     success:
       'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm shadow-emerald-500/20',
   };

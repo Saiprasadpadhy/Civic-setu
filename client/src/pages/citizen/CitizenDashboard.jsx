@@ -279,12 +279,12 @@ export default function CitizenDashboard() {
 
                             <span className="flex items-center gap-1 text-slate-600 font-medium">
                               <Building2 className="w-3.5 h-3.5 text-slate-400" />
-                              {grievance.departmentId?.name || 'Municipal Dept'}
+                              {grievance.departmentId?.name || (grievance.category === 'invalid' || !grievance.departmentId ? 'Unassigned / NA' : 'Unassigned')}
                             </span>
 
                             <span className="flex items-center gap-1 text-slate-500">
                               <Clock className="w-3.5 h-3.5 text-slate-400" />
-                              SLA Target: <strong>{grievance.departmentId?.defaultSlaHours || 72}h</strong>
+                              SLA Target: <strong>{grievance.departmentId ? `${grievance.departmentId.defaultSlaHours || 72}h` : 'NA'}</strong>
                             </span>
 
                             <span className="flex items-center gap-1 text-slate-400">

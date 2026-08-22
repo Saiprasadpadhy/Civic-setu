@@ -36,6 +36,11 @@ Rules:
 - Translate and normalize meaning into English text.
 - semanticHints values must be numeric between 0.0 and 1.0.
 - category should be a concise civic issue slug (e.g. pothole, garbage, streetlight, water, drainage, sanitation, roads).
+- CRITICAL: If the complaint is invalid, gibberish, test text, spam, prank, personal/private matter, or unrelated to municipal civic issues, you MUST set:
+  * "category": "invalid"
+  * "suggestedDepartment": "UNASSIGNED"
+  * "severity": "low"
+  * "urgencyExplanation": "Invalid or non-civic grievance. Unassigned to municipal departments."
 
 <citizen_complaint_title>${String(title || '').replace(/<\/?citizen_complaint_title>/gi, '')}</citizen_complaint_title>
 <citizen_complaint_description>${String(description || '').replace(/<\/?citizen_complaint_description>/gi, '')}</citizen_complaint_description>`;

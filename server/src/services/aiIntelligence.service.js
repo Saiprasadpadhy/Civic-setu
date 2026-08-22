@@ -35,17 +35,25 @@ async function logInference({
 }
 
 async function resolveDepartment(category, suggestedDepartmentCode) {
-  if (category) {
-    const byCategory = await Department.findOne({ categories: category, isActive: true });
+  const normCategory = String(category || '').toLowerCase().trim();
+  if (normCategory && !['invalid', 'other', 'none', 'unassigned', 'n/a', 'na'].includes(normCategory)) {
+    const byCategory = await Department.findOne({ categories: normCategory, isActive: true });
     if (byCategory) return byCategory;
   }
 
-  if (suggestedDepartmentCode) {
+  const normCode = String(suggestedDepartmentCode || '').toUpperCase().trim();
+  if (normCode && !['NONE', 'N/A', 'NA', 'UNASSIGNED', 'OTHER', 'INVALID', 'NULL'].includes(normCode)) {
     const byCode = await Department.findOne({
-      code: suggestedDepartmentCode.toUpperCase(),
+      code: normCode,
       isActive: true,
     });
     if (byCode) return byCode;
+
+    const byName = await Department.findOne({
+      name: new RegExp(`^${suggestedDepartmentCode.trim()}$`, 'i'),
+      isActive: true,
+    });
+    if (byName) return byName;
   }
 
   return null;
@@ -146,7 +154,7 @@ export async function runIntelligencePipeline(grievance, options = {}) {
   grievance.descriptionNormalized = text.normalizedText.description;
   grievance.category = text.category;
   grievance.subcategory = grievance.subcategory || text.category;
-  grievance.departmentId = department?._id ?? grievance.departmentId;
+  grievance.departmentId = department?._id ?? null;
   grievance.severity = priority.severity;
   grievance.priority = priority.priority;
   grievance.priorityScore = priority.score;

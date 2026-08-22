@@ -290,7 +290,7 @@ export default function AdminAllGrievancesPage() {
 
                   <TableCell className="text-xs">
                     <p className="font-semibold text-slate-800">{g.wardId?.name}</p>
-                    <p className="text-slate-400">{g.departmentId?.name || 'Auto-Routed'}</p>
+                    <p className="text-slate-400">{g.departmentId?.name || (g.category === 'invalid' || !g.departmentId ? 'Unassigned / NA' : 'Auto-Routed')}</p>
                   </TableCell>
 
                   <TableCell>

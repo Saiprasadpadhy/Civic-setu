@@ -32,29 +32,29 @@ export const ROUTES = {
 };
 
 export const STATUS_CONFIG = {
-  submitted: { label: 'Submitted', color: 'bg-blue-100 text-blue-800 border-blue-200' },
-  under_review: { label: 'Under Review', color: 'bg-indigo-100 text-indigo-800 border-indigo-200' },
-  assigned: { label: 'Assigned', color: 'bg-amber-100 text-amber-800 border-amber-200' },
-  in_progress: { label: 'In Progress', color: 'bg-purple-100 text-purple-800 border-purple-200' },
-  resolved: { label: 'Resolved', color: 'bg-emerald-100 text-emerald-800 border-emerald-200' },
-  closed: { label: 'Closed', color: 'bg-slate-100 text-slate-700 border-slate-300' },
-  rejected: { label: 'Rejected', color: 'bg-rose-100 text-rose-800 border-rose-200' },
-  reopened: { label: 'Reopened', color: 'bg-orange-100 text-orange-800 border-orange-200' },
+  submitted: { label: 'Submitted', color: 'bg-slate-100 text-slate-800 border-slate-300' },
+  under_review: { label: 'Under Review', color: 'bg-blue-50 text-blue-900 border-blue-200' },
+  assigned: { label: 'Assigned', color: 'bg-amber-50 text-amber-900 border-amber-300' },
+  in_progress: { label: 'In Progress', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+  resolved: { label: 'Resolved', color: 'bg-emerald-50 text-emerald-900 border-emerald-300' },
+  closed: { label: 'Closed', color: 'bg-zinc-100 text-zinc-700 border-zinc-300' },
+  rejected: { label: 'Rejected', color: 'bg-red-50 text-red-900 border-red-200' },
+  reopened: { label: 'Reopened', color: 'bg-orange-50 text-orange-900 border-orange-200' },
   draft: { label: 'Draft', color: 'bg-gray-100 text-gray-700 border-gray-200' },
 };
 
 export const PRIORITY_CONFIG = {
-  critical: { label: 'Critical', color: 'bg-rose-500 text-white shadow-rose-200 shadow-sm' },
-  high: { label: 'High', color: 'bg-amber-500 text-white shadow-amber-200 shadow-sm' },
-  medium: { label: 'Medium', color: 'bg-blue-500 text-white shadow-blue-200 shadow-sm' },
-  low: { label: 'Low', color: 'bg-emerald-500 text-white shadow-emerald-200 shadow-sm' },
+  critical: { label: 'Critical', color: 'bg-red-600 text-white shadow-red-200 shadow-sm' },
+  high: { label: 'High', color: 'bg-amber-600 text-white shadow-amber-200 shadow-sm' },
+  medium: { label: 'Medium', color: 'bg-[#173a60] text-white shadow-slate-200 shadow-sm' },
+  low: { label: 'Low', color: 'bg-teal-600 text-white shadow-teal-200 shadow-sm' },
 };
 
 export const SEVERITY_CONFIG = {
-  critical: { label: 'Critical Severity', color: 'text-rose-600 bg-rose-50 border-rose-200' },
-  high: { label: 'High Severity', color: 'text-amber-600 bg-amber-50 border-amber-200' },
-  medium: { label: 'Medium Severity', color: 'text-blue-600 bg-blue-50 border-blue-200' },
-  low: { label: 'Low Severity', color: 'text-emerald-600 bg-emerald-50 border-emerald-200' },
+  critical: { label: 'Critical Severity', color: 'text-red-700 bg-red-50 border-red-200' },
+  high: { label: 'High Severity', color: 'text-amber-700 bg-amber-50 border-amber-200' },
+  medium: { label: 'Medium Severity', color: 'text-slate-800 bg-slate-100 border-slate-300' },
+  low: { label: 'Low Severity', color: 'text-teal-700 bg-teal-50 border-teal-200' },
 };
 
 export const CATEGORIES = [

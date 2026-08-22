@@ -16,22 +16,25 @@ function mockTextAnalysis({ title, description }) {
   const isHindi = /[\u0900-\u097F]/.test(title + description);
   const isOdia = /[\u0B00-\u0B7F]/.test(title + description);
 
-  let category = 'streetlight';
-  let suggestedDepartment = 'ROADS';
+  let category = 'invalid';
+  let suggestedDepartment = 'UNASSIGNED';
 
   if (combined.includes('pothole') || combined.includes('road') || combined.includes('गड्ढा') || combined.includes('ଗାଡ଼')) {
     category = 'pothole';
     suggestedDepartment = 'ROADS';
-  } else if (combined.includes('garbage') || combined.includes('kachra') || combined.includes('waste')) {
+  } else if (combined.includes('garbage') || combined.includes('kachra') || combined.includes('waste') || combined.includes('drainage') || combined.includes('ड्रेनेज')) {
     category = 'garbage';
     suggestedDepartment = 'SANITATION';
   } else if (combined.includes('water') || combined.includes('pani') || combined.includes('leak')) {
     category = 'water';
     suggestedDepartment = 'WATER';
+  } else if (combined.includes('streetlight') || combined.includes('light') || combined.includes('lamp')) {
+    category = 'streetlight';
+    suggestedDepartment = 'ROADS';
   }
 
-  const normalizedTitle = isHindi ? 'Pothole on road' : isOdia ? 'Pothole on road' : title;
-  const normalizedDescription = isHindi ? 'Large pothole causing issues' : isOdia ? 'Large pothole causing issues' : description;
+  const normalizedTitle = isHindi ? (category === 'invalid' ? 'Invalid complaint' : 'Civic issue reported') : isOdia ? (category === 'invalid' ? 'Invalid complaint' : 'Civic issue reported') : title;
+  const normalizedDescription = isHindi ? (category === 'invalid' ? 'Details of invalid or unassigned complaint' : 'Civic issue description') : isOdia ? (category === 'invalid' ? 'Details of invalid or unassigned complaint' : 'Civic issue description') : description;
 
   return {
     summary: `AI generated summary for ${category} issue: ${title}`,

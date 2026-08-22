@@ -123,7 +123,7 @@ export default function AdminGrievanceDetailPage() {
 
               <div>
                 <p className="text-slate-400 font-medium">Department</p>
-                <p className="font-semibold text-slate-800 mt-0.5">{grievance.departmentId?.name || 'Unassigned'}</p>
+                <p className="font-semibold text-slate-800 mt-0.5">{grievance.departmentId?.name || 'Unassigned / NA'}</p>
               </div>
             </div>
           </Card>

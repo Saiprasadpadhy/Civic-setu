@@ -13,7 +13,12 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: env.corsOrigin.split(',').map((o) => o.trim()),
+    origin: (origin, callback) => {
+      if (!origin || isDev) return callback(null, true);
+      const allowedOrigins = env.corsOrigin.split(',').map((o) => o.trim());
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
   })
 );
