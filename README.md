@@ -109,13 +109,6 @@ This project is licensed under the **MIT License** – see `LICENSE` for details
 
 ---
 
-## 📞 Contact
-
-- **Maintainer:** Saiprasad Padhy – [GitHub](https://github.com/Saiprasadpadhy)
-- **Issues:** Open a GitHub Issue for bugs or feature requests.
-
----
-
 <<<<<<< HEAD
 _Built for the Smart India Hackathon 2026._
 =======
