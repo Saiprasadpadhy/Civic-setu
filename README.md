@@ -108,10 +108,3 @@ Backend can be deployed to any Node‑compatible environment (Heroku, Vercel, Ra
 This project is licensed under the **MIT License** – see `LICENSE` for details.
 
 ---
-
-<<<<<<< HEAD
-_Built for the Smart India Hackathon 2026._
-=======
-_Built for the Smart India Hackathon 2026._
-
-> > > > > > > 7a4944e5399006d2a72d9a8782b299835b0431df
